@@ -24,6 +24,10 @@ const userSchema = mongoose.Schema({
     preferences: [{
         type: String
     }],
+    prefferedLanguage : {
+      type: String,
+    },
+
     location : {
       type:String,
       deafult:null 

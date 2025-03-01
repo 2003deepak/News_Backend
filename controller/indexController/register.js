@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 const register = async(req,res) =>{
 
-    const {fname,lname,username,password,email,preferences,location} = req.body ; 
+    const {firstName,lastName,username,password,email,preferences,location,prefferedLanguage} = req.body ; 
 
     try{
     
@@ -19,12 +19,13 @@ const register = async(req,res) =>{
                 bcrypt.hash(password, salt, async (err, hash)=> {
         
                     let user = await userModel.create({
-                        firstName:fname,
-                        lastName:lname,
+                        firstName:firstName,
+                        lastName:lastName,
                         username:username,
                         password : hash,
                         email:email,
                         preferences : preferences,
+                        prefferedLanguage : prefferedLanguage || "English",
                         location:location
                         
                     })
